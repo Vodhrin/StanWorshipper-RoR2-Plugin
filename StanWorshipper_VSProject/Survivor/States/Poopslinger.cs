@@ -1,12 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.Networking;
-using RoR2;
-using RoR2.Projectile;
+﻿using EntityStates;
 using R2API.Networking;
 using R2API.Networking.Interfaces;
-using EntityStates;
+using RoR2;
+using RoR2.Projectile;
+using StanWorshipper.Core;
+using UnityEngine;
+using UnityEngine.Networking;
 
-namespace StanWorshipper.States
+namespace StanWorshipper.Survivor.States
 {
     public class Poopslinger : BaseSkillState
     {
@@ -89,7 +90,7 @@ namespace StanWorshipper.States
 				float angle = Mathf.Atan2(vector.z, vector.x) * 57.29578f - 90f;
 				float angle2 = Mathf.Atan2(y, vector.magnitude) * 57.29578f + Poopslinger.arcAngle;
 				Vector3 forward = Quaternion.AngleAxis(angle, up) * (Quaternion.AngleAxis(angle2, axis) * this.projectileRay.direction);
-				ProjectileManager.instance.FireProjectile(StanWorshipperPlugin.poopslingerProjectile, this.projectileRay.origin + new Vector3(0, 0.6f, 0), Util.QuaternionSafeLookRotation(forward), base.gameObject, this.damageStat * Poopslinger.damageCoefficient, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.Default, null, -1f);
+				ProjectileManager.instance.FireProjectile(Survivor.Projectiles.poopslingerProjectile, this.projectileRay.origin + new Vector3(0, 0.6f, 0), Util.QuaternionSafeLookRotation(forward), base.gameObject, this.damageStat * Poopslinger.damageCoefficient, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.Default, null, -1f);
 			}
 			base.characterBody.AddSpreadBloom(Poopslinger.spreadBloomValue);
 		}

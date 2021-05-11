@@ -1,10 +1,10 @@
-﻿using System;
+﻿using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
+using StanWorshipper.Core;
 using UnityEngine;
-using EntityStates;
 
-namespace StanWorshipper.States.SummonStates
+namespace StanWorshipper.Survivor.States.SummonStates
 {
     class WeakStanMain : BaseState
     {
@@ -149,7 +149,7 @@ namespace StanWorshipper.States.SummonStates
         private void Explode()
         {
 
-            EffectManager.SpawnEffect(StanWorshipperPlugin.weakStanBurnEffect, new EffectData
+            EffectManager.SpawnEffect(Survivor.Effects.weakStanBurnEffect, new EffectData
             {
                 origin = base.transform.position,
                 scale = 2.5f

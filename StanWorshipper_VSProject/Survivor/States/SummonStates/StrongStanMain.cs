@@ -1,10 +1,10 @@
-﻿using System;
+﻿using EntityStates;
 using RoR2;
 using RoR2.CharacterAI;
+using StanWorshipper.Core;
 using UnityEngine;
-using EntityStates;
 
-namespace StanWorshipper.States.SummonStates
+namespace StanWorshipper.Survivor.States.SummonStates
 {
     class StrongStanMain : BaseState
     {

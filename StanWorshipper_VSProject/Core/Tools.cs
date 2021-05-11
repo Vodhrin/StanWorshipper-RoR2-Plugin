@@ -2,7 +2,7 @@
 using System.Reflection;
 using UnityEngine;
 
-namespace StanWorshipper
+namespace StanWorshipper.Core
 {
     public static class Tools
     {

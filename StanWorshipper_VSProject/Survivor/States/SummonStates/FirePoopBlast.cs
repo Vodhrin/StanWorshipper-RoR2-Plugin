@@ -1,10 +1,10 @@
-﻿using System;
+﻿using EntityStates;
 using RoR2;
 using RoR2.Projectile;
+using StanWorshipper.Core;
 using UnityEngine;
-using EntityStates;
 
-namespace StanWorshipper.States.SummonStates
+namespace StanWorshipper.Survivor.States.SummonStates
 {
     class FirePoopBlast : BaseState
     {
@@ -69,7 +69,7 @@ namespace StanWorshipper.States.SummonStates
 					{
 						EffectManager.SimpleMuzzleFlash(FirePoopBlast.muzzleflashEffectPrefab, base.gameObject, FirePoopBlast.muzzleString, false);
 					}
-					Util.PlayScaledSound(FirePoopBlast.attackString, base.gameObject, this.attackSpeedStat);
+					Util.PlayAttackSpeedSound(FirePoopBlast.attackString, base.gameObject, this.attackSpeedStat);
 					Ray aimRay = base.GetAimRay();
 					float speedOverride = this.projectileSpeed;
 					int num2 = Mathf.FloorToInt((float)this.projectilesFired - (float)(this.projectileCount - 1) / 2f);
@@ -84,7 +84,7 @@ namespace StanWorshipper.States.SummonStates
 						bonusPitch = (float)num2 / (float)(this.projectileCount - 1) * this.totalYawSpread;
 					}
 					Vector3 forward = Util.ApplySpread(aimRay.direction, 0f, 0f, 1f, 1f, bonusYaw, bonusPitch);
-					ProjectileManager.instance.FireProjectile(StanWorshipperPlugin.poopslingerProjectile, aimRay.origin, Util.QuaternionSafeLookRotation(forward), base.gameObject, this.damageStat * this.damageCoefficient, FirePoopBlast.force, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.Default, null, speedOverride);
+					ProjectileManager.instance.FireProjectile(Survivor.Projectiles.poopslingerProjectile, aimRay.origin, Util.QuaternionSafeLookRotation(forward), base.gameObject, this.damageStat * this.damageCoefficient, FirePoopBlast.force, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.Default, null, speedOverride);
 					this.projectilesFired++;
 				}
 			}

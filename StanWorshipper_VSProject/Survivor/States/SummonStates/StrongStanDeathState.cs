@@ -1,11 +1,8 @@
-﻿using System;
-using RoR2;
-using UnityEngine;
-using EntityStates;
+﻿using EntityStates;
 
-namespace StanWorshipper.States.SummonStates
+namespace StanWorshipper.Survivor.States.SummonStates
 {
-	public class WeakStanDeathState : BaseState
+	public class StrongStanDeathState : BaseState
 	{
 		public override void OnEnter()
 		{

@@ -1,17 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using R2API.Networking;
+using R2API.Networking.Interfaces;
+using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
-using RoR2;
-using RoR2.Networking;
-using R2API.Networking;
-using R2API.Networking.Interfaces;
 
-
-namespace StanWorshipper
+namespace StanWorshipper.Core
 {
    internal class NetMessages
     {
+        public static void Initialize()
+        {
+            NetworkingAPI.RegisterMessageType<NetMessages.SoundMessage>();
+            NetworkingAPI.RegisterMessageType<NetMessages.SpawnStanMinonMessage>();
+            NetworkingAPI.RegisterMessageType<NetMessages.HealFractionMessage>();
+            NetworkingAPI.RegisterMessageType<NetMessages.TimedBuffMessage>();
+        }
+
         public class SoundMessage : INetMessage
         {
             private NetworkInstanceId targetId;
@@ -52,7 +56,7 @@ namespace StanWorshipper
                     return;
                 }
 
-                Util.PlayScaledSound(soundName, gameObject, rate);
+                Util.PlayAttackSpeedSound(soundName, gameObject, rate);
             }
         }
 
@@ -115,7 +119,7 @@ namespace StanWorshipper
                     ignoreTeamMemberLimit = true,
                     teamIndexOverride = new TeamIndex?(TeamIndex.Player)
                 }.Perform();
-                characterMaster.inventory.GiveItem(ItemIndex.HealthDecay, 30);
+                characterMaster.inventory.GiveItem(RoR2Content.Items.HealthDecay.itemIndex, 30);
 
                 if (this.playSound & this.soundName != "")
                 {

@@ -1,33 +1,29 @@
-﻿using UnityEngine;
-using UnityEngine.Networking;
-using RoR2;
+﻿using EntityStates;
 using R2API.Networking;
 using R2API.Networking.Interfaces;
-using EntityStates;
+using RoR2;
+using StanWorshipper.Core;
+using UnityEngine;
+using UnityEngine.Networking;
 
-namespace StanWorshipper.States
+namespace StanWorshipper.Survivor.States
 {
-    public class SummonMinor : BaseSkillState
+    public class SummonMajor : BaseSkillState
     {
         public float baseDuration = 1f;
-        public static int count = 3;
 
         private float duration;
+        private Ray aimRay;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = this.baseDuration;
-            this.PlaySound(Assets.WeakStanSpawnSound, base.gameObject);
+            this.duration = baseDuration;
 
-            for (int i = 0; i < SummonMinor.count; i++) 
-            {
-            Vector3 position = base.characterBody.corePosition + new Vector3(Random.Range(-4f, 4f), 5, Random.Range(-4f, 4f));
-
-            this.SpawnStanMinion(base.gameObject, "WeakStanFragmentMaster", position);
-            }
+            Vector3 spawnPos = GetSpawnPos();
+            this.SpawnStanMinion(base.gameObject, "StrongStanFragmentMaster", spawnPos);
         }
-        
+
         public override void OnExit()
         {
             base.OnExit();
@@ -46,6 +42,27 @@ namespace StanWorshipper.States
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.PrioritySkill;
+        }
+
+        private Vector3 GetSpawnPos()
+        {
+            this.aimRay = base.GetAimRay();
+            RaycastHit raycastHit;
+            if (Util.CharacterRaycast(base.gameObject, this.aimRay, out raycastHit, float.PositiveInfinity, LayerIndex.world.mask | LayerIndex.entityPrecise.mask, QueryTriggerInteraction.Ignore))
+            {
+                if (Vector3.Distance(raycastHit.point, base.transform.position) > 150)
+                {
+                    return base.transform.position + new Vector3(0f, 5f, 0f);
+                }
+                else
+                {
+                    return raycastHit.point;
+                }
+            }
+            else
+            {
+                return base.transform.position + new Vector3(0f, 5f, 0f);
+            }
         }
 
         private void PlaySound(string soundName, GameObject gameObject, float rate = 1)
@@ -72,14 +89,16 @@ namespace StanWorshipper.States
                     ignoreTeamMemberLimit = true,
                     teamIndexOverride = new TeamIndex?(TeamIndex.Player)
                 }.Perform();
-                characterMaster.inventory.GiveItem(ItemIndex.HealthDecay, 35);
+                characterMaster.inventory.GiveItem(RoR2Content.Items.HealthDecay.itemIndex, 35);
+
+                this.PlaySound(Assets.StrongStanSpawnSound, characterMaster.GetBodyObject());
             }
             else
             {
                 NetworkIdentity networkIdentity = base.gameObject.GetComponent<NetworkIdentity>();
                 if (networkIdentity)
                 {
-                    new NetMessages.SpawnStanMinonMessage(networkIdentity.netId, masterName, position)
+                    new NetMessages.SpawnStanMinonMessage(networkIdentity.netId, masterName, position, true, Assets.StrongStanSpawnSound)
                         .Send(NetworkDestination.Server);
                 }
             }

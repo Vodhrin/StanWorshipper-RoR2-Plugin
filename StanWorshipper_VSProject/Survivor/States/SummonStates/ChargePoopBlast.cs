@@ -1,9 +1,8 @@
-﻿using System;
+﻿using EntityStates;
 using RoR2;
 using UnityEngine;
-using EntityStates;
 
-namespace StanWorshipper.States.SummonStates
+namespace StanWorshipper.Survivor.States.SummonStates
 {
 
 	class ChargePoopBlast : BaseState
@@ -17,7 +16,7 @@ namespace StanWorshipper.States.SummonStates
 			base.OnEnter();
 			this.duration = ChargePoopBlast.baseDuration / this.attackSpeedStat;
 			Transform modelTransform = base.GetModelTransform();
-			Util.PlayScaledSound(ChargePoopBlast.attackString, base.gameObject, this.attackSpeedStat);
+			Util.PlayAttackSpeedSound(ChargePoopBlast.attackString, base.gameObject, this.attackSpeedStat);
 		}
 
 		public override void OnExit()

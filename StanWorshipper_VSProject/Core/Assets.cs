@@ -1,13 +1,11 @@
 ﻿using System.IO;
 using System.Reflection;
-using UnityEngine;
-using UnityEngine.Networking;
-using RoR2;
 using R2API;
+using UnityEngine;
 
-namespace StanWorshipper
+namespace StanWorshipper.Core
 {
-    public static class Assets
+    internal static class Assets
     {
 
         public static AssetBundle MainAssetBundle = null;
@@ -32,7 +30,7 @@ namespace StanWorshipper
         public const string StanLaughSound = "StanLaugh";
         public const string StanScreamSound = "StanScream";
 
-        public static void InitializeAssets()
+        public static void Initialize()
         {
 
             if (MainAssetBundle == null)

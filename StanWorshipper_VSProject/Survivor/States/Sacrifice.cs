@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-using RoR2;
+using EntityStates;
 using R2API.Networking;
 using R2API.Networking.Interfaces;
-using EntityStates;
+using RoR2;
+using StanWorshipper.Core;
+using UnityEngine;
+using UnityEngine.Networking;
 
-namespace StanWorshipper.States
+namespace StanWorshipper.Survivor.States
 {
     public class Sacrifice : BaseSkillState
     {
@@ -40,18 +41,18 @@ namespace StanWorshipper.States
             {
                 if(i.gameObject && i.body.master.minionOwnership.ownerMaster == this.characterBody.master && i.body.master.bodyPrefab)
                 {
-                    if(i.body.master.bodyPrefab == StanWorshipperPlugin.weakStanFragmentBody)
+                    if(i.body.master.bodyPrefab == Survivor.Summons.weakStanFragmentBody)
                     {
                         weakStans.Add(i.body);
                     }
-                    else if (i.body.master.bodyPrefab == StanWorshipperPlugin.strongStanFragmentBody)
+                    else if (i.body.master.bodyPrefab == Survivor.Summons.strongStanFragmentBody)
                     {
                         strongStans.Add(i.body);
                     }
                 }
             }
 
-            this.ApplyNetworkedTimedBuff(base.gameObject, StanWorshipperPlugin.sacrificeBuff, 1, Sacrifice.buffDuration);
+            this.ApplyNetworkedTimedBuff(base.gameObject, Survivor.Buffs.sacrificeBuff, 1, Sacrifice.buffDuration);
 
         }
         public override void OnExit()
@@ -78,7 +79,7 @@ namespace StanWorshipper.States
                 {
                     this.explosionTimer += this.explosionInterval;
 
-                    this.Explode(base.characterBody, 1f, BlastAttack.FalloffModel.Linear, StanWorshipperPlugin.sacrificeBaseEffect, new EffectData
+                    this.Explode(base.characterBody, 1f, BlastAttack.FalloffModel.Linear, Survivor.Effects.sacrificeBaseEffect, new EffectData
                     {
                         origin = base.transform.position,
                         color = Color.red,
@@ -94,7 +95,7 @@ namespace StanWorshipper.States
                     foreach(CharacterBody i in strongStans)
                     {
                         if (!i) continue;
-                        this.Explode(i, 1.8f, BlastAttack.FalloffModel.Linear, StanWorshipperPlugin.sacrificeStanEffect, new EffectData 
+                        this.Explode(i, 1.8f, BlastAttack.FalloffModel.Linear, Survivor.Effects.sacrificeStanEffect, new EffectData 
                         {
                             origin = i.transform.position,
                             color = Color.red,
