@@ -15,6 +15,7 @@ namespace StanWorshipper.Survivor.States
         public static float healFraction = 0.08f;
         public static int explosionCount = 7;
         public static float damageCoefficient = 1.75f;
+        public static float procCoefficient = 0.2f;
         public static float force;
         public static float damageScaling;
         public static float buffDuration = 7f;
@@ -127,6 +128,7 @@ namespace StanWorshipper.Survivor.States
                         inflictor = originBody.gameObject,
                         teamIndex = TeamComponent.GetObjectTeam(base.gameObject),
                         baseDamage = this.damageStat * Sacrifice.damageCoefficient * mult,
+                        procCoefficient = Sacrifice.procCoefficient,
                         baseForce = Sacrifice.force,
                         position = originBody.transform.position,
                         radius = Sacrifice.radius * mult,

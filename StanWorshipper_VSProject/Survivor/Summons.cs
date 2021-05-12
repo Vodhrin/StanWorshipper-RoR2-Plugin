@@ -63,36 +63,6 @@ namespace StanWorshipper.Survivor
             weakStanLight.intensity = 100f;
             weakStanLight.color = Color.red;
 
-            //Life is pain. AhaA.
-            //Adds particle effects to the Minor Stan Fragments.
-            //foreach (ParticleSystem i in Instantiate(Resources.Load<GameObject>("prefabs/characterbodies/wispbody")).GetComponentsInChildren<ParticleSystem>())
-            //{
-            //    if (i.gameObject.name == "Fire")
-            //    {
-            //        wispBodyClone = i.gameObject;
-            //    }
-            //}
-            //ParticleSystem weakStanParticleSystem = weakStanFragmentBody.AddComponent<ParticleSystem>();
-            //var copy1 = weakStanParticleSystem.GetCopyOf<ParticleSystem>(wispBodyClone.GetComponent<ParticleSystem>());
-            //var main1 = weakStanParticleSystem.main;
-            //var colt1 = weakStanParticleSystem.colorOverLifetime;
-            //var solt1 = weakStanParticleSystem.sizeOverLifetime;
-            //Gradient gradient = new Gradient();
-            //GradientColorKey[] colorKey = new GradientColorKey[] { new GradientColorKey(Color.red, 0.0f), new GradientColorKey(Color.red, 1.0f) };
-            //GradientAlphaKey[] alphaKey = new GradientAlphaKey[] { new GradientAlphaKey(0.0f, 0.0f), new GradientAlphaKey(0.15f, 0.25f), new GradientAlphaKey(0.15f, 0.75f), new GradientAlphaKey(0.0f, 1.0f) };
-            //gradient.SetKeys(colorKey, alphaKey);
-            //colt1.enabled = true;
-            //colt1.color = gradient;
-            //AnimationCurve animation = new AnimationCurve();
-            //animation.AddKey(0.0f, 0.0f);
-            //animation.AddKey(0.0f, 0.0f);
-            //animation.AddKey(0.5f, 0.95f);
-            //animation.AddKey(1.0f, 0.2f);
-            //solt1.enabled = true;
-            //solt1.size = new ParticleSystem.MinMaxCurve(2f, animation);
-            //main1.gravityModifier = 0f;
-            //weakStanParticleSystem.GetComponent<ParticleSystemRenderer>().material = Assets.weakStanFireMaterial;
-
             //Remove the default explode skill.
             foreach (GenericSkill i in weakStanBody.GetComponentsInChildren<GenericSkill>())
             {
@@ -152,19 +122,6 @@ namespace StanWorshipper.Survivor
             strongStanLight.renderMode = LightRenderMode.Auto;
             strongStanLight.intensity = 75f;
             strongStanLight.color = Color.red;
-
-            //Add the same particle system as weakstan but with bigger particles (looks like shit lmao).
-            //ParticleSystem strongStanParticleSystem = strongStanFragmentBody.AddComponent<ParticleSystem>();
-            //var copy2 = strongStanParticleSystem.GetCopyOf<ParticleSystem>(wispBodyClone.GetComponent<ParticleSystem>());
-            //var main2 = strongStanParticleSystem.main;
-            //var colt2 = strongStanParticleSystem.colorOverLifetime;
-            //var solt2 = strongStanParticleSystem.sizeOverLifetime;
-            //colt2.enabled = true;
-            //colt2.color = gradient;
-            //solt2.enabled = true;
-            //solt2.size = new ParticleSystem.MinMaxCurve(7f, animation);
-            //main2.gravityModifier = 0f;
-            //strongStanParticleSystem.GetComponent<ParticleSystemRenderer>().material = Assets.weakStanFireMaterial;
 
             //Remove the solus boss templates default utility(spawn probes) and ultimate(aoe slow rape).
             foreach (GenericSkill i in strongStanBody.GetComponentsInChildren<GenericSkill>())

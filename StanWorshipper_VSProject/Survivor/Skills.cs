@@ -103,6 +103,15 @@ namespace StanWorshipper.Survivor
 
             var skillLocator = Character.stanWorshipperBody.GetComponent<SkillLocator>();
 
+            //Passive
+            skillLocator.passiveSkill.enabled = true;
+            skillLocator.passiveSkill.skillNameToken = "STANWORSHIPPER_PASSIVE_NAME";
+            skillLocator.passiveSkill.skillDescriptionToken = "STANWORSHIPPER_PASSIVE_DESCRIPTION";
+            //This is fucking retarded and doesn't even work but I'm too lazy to add to the asset bundle rn.
+            Texture2D texture = Resources.Load<Texture2D>("textures/shrinesymbols/texShrineBloodSymbol");
+            Sprite sprite = Sprite.Create(texture, new Rect(new Vector2(0, 0), new Vector2(1, 1)), Vector2.zero, 100f);
+            skillLocator.passiveSkill.icon = sprite;
+
             //Primary
             var skillFamily1 = skillLocator.primary.skillFamily;
             skillFamily1.variants = new SkillFamily.Variant[1]; // substitute 1 for the number of skill variants you are implementing

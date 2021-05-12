@@ -116,6 +116,7 @@ namespace StanWorshipper
 
         private void BuffCatalog_Init(On.RoR2.BuffCatalog.orig_Init orig)
         {
+            orig();
             Survivor.Buffs.GetBuffIndices();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using On.EntityStates.Treebot.Weapon;
 using RoR2;
 using RoR2.CharacterAI;
 using StanWorshipper.Core;
@@ -12,6 +13,7 @@ namespace StanWorshipper.Survivor.States.SummonStates
         public static float baseDuration = 1f;
         public static float radius = 5.2f;
         public static float damageCoefficient = 1.4f;
+        public static float procCoefficient = 0.8f;
         public static float force = 0f;
         private float burnTimer;
         private float interval;
@@ -163,6 +165,7 @@ namespace StanWorshipper.Survivor.States.SummonStates
                     inflictor = base.gameObject,
                     teamIndex = TeamComponent.GetObjectTeam(base.gameObject),
                     baseDamage = this.damageStat * WeakStanMain.damageCoefficient,
+                    procCoefficient = WeakStanMain.procCoefficient,
                     baseForce = WeakStanMain.force,
                     position = base.transform.position,
                     radius = WeakStanMain.radius,

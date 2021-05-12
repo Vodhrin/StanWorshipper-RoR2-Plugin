@@ -28,8 +28,8 @@ namespace StanWorshipper.Survivor
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
             bodyComponent.rootMotionInMainState = false;
             bodyComponent.mainRootSpeed = 0;
-            bodyComponent.baseMaxHealth = 84;
-            bodyComponent.levelMaxHealth = 24;
+            bodyComponent.baseMaxHealth = 100;
+            bodyComponent.levelMaxHealth = 28;
             bodyComponent.baseRegen = 0.5f;
             bodyComponent.levelRegen = 0.25f;
             bodyComponent.baseMaxShield = 0;
@@ -40,7 +40,7 @@ namespace StanWorshipper.Survivor
             bodyComponent.baseJumpPower = 15;
             bodyComponent.levelJumpPower = 0;
             bodyComponent.baseDamage = 13;
-            bodyComponent.levelDamage = 3.5f;
+            bodyComponent.levelDamage = 3.3f;
             bodyComponent.baseAttackSpeed = 1;
             bodyComponent.levelAttackSpeed = 0;
             bodyComponent.baseCrit = 1;
@@ -56,6 +56,7 @@ namespace StanWorshipper.Survivor
             bodyComponent.isChampion = false;
             bodyComponent.currentVehicle = null;
             bodyComponent.skinIndex = 0U;
+            bodyComponent.bodyColor = new Color(0.6f, 0.3f, 0f);
 
             NetworkStateMachine networkStateMachine = stanWorshipperBody.GetComponent<NetworkStateMachine>();
             EntityStateMachine customEntityStateMachine = stanWorshipperBody.AddComponent<EntityStateMachine>();
@@ -109,8 +110,6 @@ namespace StanWorshipper.Survivor
             stanWorshipper.primaryColor = new Color(0.6f, 0.3f, 0f);
 
             SurvivorAPI.AddSurvivor(stanWorshipper);
-
-            //Unsure if R2API does this automatically.
             StanWorshipperPlugin.characterMasters.Add(stanWorshipperDoppelganger);
         }
     }
