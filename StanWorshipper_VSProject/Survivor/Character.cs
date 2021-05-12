@@ -109,9 +109,8 @@ namespace StanWorshipper.Survivor
             stanWorshipper.primaryColor = new Color(0.6f, 0.3f, 0f);
 
             SurvivorAPI.AddSurvivor(stanWorshipper);
-            StanWorshipperPlugin.survivorDefs.Add(stanWorshipper);
 
-            StanWorshipperPlugin.characterBodies.Add(stanWorshipperBody);
+            //Unsure if R2API does this automatically.
             StanWorshipperPlugin.characterMasters.Add(stanWorshipperDoppelganger);
         }
     }

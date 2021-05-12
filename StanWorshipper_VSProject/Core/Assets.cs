@@ -9,7 +9,6 @@ namespace StanWorshipper.Core
     {
 
         public static AssetBundle MainAssetBundle = null;
-        public static AssetBundleResourcesProvider Provider;
 
         public static Sprite icon1;
         public static Sprite icon2;
@@ -38,7 +37,6 @@ namespace StanWorshipper.Core
                 using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("StanWorshipper.stanworshipperassetbundle"))
                 {
                     MainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                    Provider = new AssetBundleResourcesProvider("@StanWorshipper", MainAssetBundle);
                 }
             }
 

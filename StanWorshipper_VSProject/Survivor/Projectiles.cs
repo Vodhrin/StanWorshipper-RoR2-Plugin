@@ -16,7 +16,7 @@ namespace StanWorshipper.Survivor
         {
             poopslingerProjectile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/ClayPotProjectile"), "PoopslingerProjectile", true);
             if (!poopslingerProjectile.GetComponent<NetworkIdentity>()) poopslingerProjectile.AddComponent<NetworkIdentity>();
-            poopslingerProjectile.GetComponent<ProjectileSimple>().velocity = 100f;
+            poopslingerProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 100f;
             poopslingerProjectile.GetComponent<ProjectileController>().procCoefficient = 1.5f;
             poopslingerProjectile.GetComponent<ProjectileController>().ghostPrefab = Resources.Load<GameObject>("prefabs/projectileghosts/BeetleQueenSpitGhost");
             poopslingerProjectile.GetComponent<ProjectileDamage>().damage = 1f;
@@ -24,10 +24,7 @@ namespace StanWorshipper.Survivor
             poopslingerProjectile.GetComponentInChildren<ProjectileImpactExplosion>().blastRadius = 6.5f;
             poopslingerProjectile.GetComponentInChildren<ProjectileImpactExplosion>().impactEffect = Effects.poopslingerExplosionEffect;
 
-            ProjectileCatalog.getAdditionalEntries += delegate (List<GameObject> list)
-            {
-                list.Add(poopslingerProjectile);
-            };
+            StanWorshipperPlugin.projectilePrefabs.Add(poopslingerProjectile);
         }
     }
 }

@@ -18,8 +18,13 @@ namespace StanWorshipper.Survivor
                 canStack = false
             };
             CustomBuff sacrificeCustomBuff = new CustomBuff(sacrificeBuffDef);
-            sacrificeBuff = BuffAPI.Add(sacrificeCustomBuff);
-            StanWorshipperPlugin.buffDefs.Add(sacrificeBuffDef);
+            BuffAPI.Add(sacrificeCustomBuff);
+            //StanWorshipperPlugin.buffDefs.Add(sacrificeBuffDef);
+        }
+
+        public static void GetBuffIndices()
+        {
+            sacrificeBuff = BuffCatalog.FindBuffIndex("Sacrifice");
         }
     }
 }

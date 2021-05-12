@@ -82,6 +82,7 @@ namespace StanWorshipper
         {
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.BuffCatalog.Init += BuffCatalog_Init;
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -111,6 +112,11 @@ namespace StanWorshipper
                 logger.LogMessage(attackerCharacterBody.master.minionOwnership.ownerMaster.GetBody().gameObject);
             }
             orig(self, damageInfo);
+        }
+
+        private void BuffCatalog_Init(On.RoR2.BuffCatalog.orig_Init orig)
+        {
+            Survivor.Buffs.GetBuffIndices();
         }
     }
 }

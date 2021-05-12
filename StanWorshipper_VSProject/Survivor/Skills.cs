@@ -100,14 +100,6 @@ namespace StanWorshipper.Survivor
             LoadoutAPI.AddSkillDef(summonMinor);
             LoadoutAPI.AddSkillDef(sacrifice);
             LoadoutAPI.AddSkillDef(summonMajor);
-            StanWorshipperPlugin.skillDefs.Add(poopSlinger);
-            StanWorshipperPlugin.skillDefs.Add(summonMinor);
-            StanWorshipperPlugin.skillDefs.Add(sacrifice);
-            StanWorshipperPlugin.skillDefs.Add(summonMajor);
-            StanWorshipperPlugin.entityStateTypes.Add(typeof(States.Poopslinger));
-            StanWorshipperPlugin.entityStateTypes.Add(typeof(States.SummonMinor));
-            StanWorshipperPlugin.entityStateTypes.Add(typeof(States.Sacrifice));
-            StanWorshipperPlugin.entityStateTypes.Add(typeof(States.SummonMajor));
 
             var skillLocator = Character.stanWorshipperBody.GetComponent<SkillLocator>();
 
@@ -120,7 +112,7 @@ namespace StanWorshipper.Survivor
                 skillDef = poopSlinger,
                 viewableNode = new ViewablesCatalog.Node(poopSlinger.skillNameToken, false, null)
             };
-            StanWorshipperPlugin.skillFamilies.Add(skillFamily1);
+            LoadoutAPI.AddSkillFamily(skillFamily1);
 
             //Secondary
             var skillFamily2 = skillLocator.secondary.skillFamily;
@@ -131,7 +123,7 @@ namespace StanWorshipper.Survivor
                 skillDef = summonMinor,
                 viewableNode = new ViewablesCatalog.Node(summonMinor.skillNameToken, false, null)
             };
-            StanWorshipperPlugin.skillFamilies.Add(skillFamily2);
+            LoadoutAPI.AddSkillFamily(skillFamily2);
 
             //Utility
             var skillFamily3 = skillLocator.utility.skillFamily;
@@ -142,7 +134,7 @@ namespace StanWorshipper.Survivor
                 skillDef = sacrifice,
                 viewableNode = new ViewablesCatalog.Node(sacrifice.skillNameToken, false, null)
             };
-            StanWorshipperPlugin.skillFamilies.Add(skillFamily3);
+            LoadoutAPI.AddSkillFamily(skillFamily3);
 
             //Ultimate
             var skillFamily4 = skillLocator.special.skillFamily;
@@ -153,7 +145,7 @@ namespace StanWorshipper.Survivor
                 skillDef = summonMajor,
                 viewableNode = new ViewablesCatalog.Node(summonMajor.skillNameToken, false, null)
             };
-            StanWorshipperPlugin.skillFamilies.Add(skillFamily4);
+            LoadoutAPI.AddSkillFamily(skillFamily4);
         }
     }
 }
