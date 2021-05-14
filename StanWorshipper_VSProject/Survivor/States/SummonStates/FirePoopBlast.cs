@@ -13,7 +13,7 @@ namespace StanWorshipper.Survivor.States.SummonStates
 		public float totalYawSpread = 5f;
 		public float baseDuration = 2f;
 		public float baseFireDuration = 0.5f;
-		public float damageCoefficient = 1.9f;
+		public float damageCoefficient = 1.75f;
 		public float projectileSpeed = 300f;
 		public static float force = 20f;
 		public static float selfForce = 0f;

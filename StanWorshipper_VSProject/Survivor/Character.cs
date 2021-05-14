@@ -21,7 +21,7 @@ namespace StanWorshipper.Survivor
             stanWorshipperBody = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/characterbodies/BanditBody"), "StanWorshipperBody", true);
             stanWorshipperBody.GetComponent<NetworkIdentity>().localPlayerAuthority = true;
 
-            CharacterBody bodyComponent = stanWorshipperBody.GetComponent<CharacterBody>();
+            var bodyComponent = stanWorshipperBody.GetComponent<CharacterBody>();
             bodyComponent.bodyIndex = BodyIndex.None;
             bodyComponent.baseNameToken = "STANWORSHIPPER_NAME";
             bodyComponent.subtitleNameToken = "STANWORSHIPPER_SUBTITLE";
@@ -58,17 +58,17 @@ namespace StanWorshipper.Survivor
             bodyComponent.skinIndex = 0U;
             bodyComponent.bodyColor = new Color(0.6f, 0.3f, 0f);
 
-            NetworkStateMachine networkStateMachine = stanWorshipperBody.GetComponent<NetworkStateMachine>();
-            EntityStateMachine customEntityStateMachine = stanWorshipperBody.AddComponent<EntityStateMachine>();
+            var networkStateMachine = stanWorshipperBody.GetComponent<NetworkStateMachine>();
+            var customEntityStateMachine = stanWorshipperBody.AddComponent<EntityStateMachine>();
             customEntityStateMachine.customName = "Sacrifice";
             customEntityStateMachine.mainStateType = new SerializableEntityStateType(typeof(Idle));
             customEntityStateMachine.initialStateType = new SerializableEntityStateType(typeof(Idle));
             ArrayUtils.ArrayAppend(ref networkStateMachine.stateMachines, customEntityStateMachine);
 
             //Adds a default placeholder skin to prevent weird errors (another disgusting waste of my time :D).
-            GameObject model = stanWorshipperBody.GetComponent<ModelLocator>().modelTransform.gameObject;
-            CharacterModel characterModel = model.GetComponent<CharacterModel>();
-            ModelSkinController skinController = model.AddComponent<ModelSkinController>();
+            var model = stanWorshipperBody.GetComponent<ModelLocator>().modelTransform.gameObject;
+            var characterModel = model.GetComponent<CharacterModel>();
+            var skinController = model.AddComponent<ModelSkinController>();
             CharacterModel.RendererInfo[] renderInfos = characterModel.baseRendererInfos;
             LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo
             {
@@ -83,14 +83,14 @@ namespace StanWorshipper.Survivor
                 RendererInfos = renderInfos,
                 RootObject = model
             };
-            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
+            var skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
             skinController.skins = new SkinDef[] { skin };
 
             //Doppelganger
             stanWorshipperDoppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "StanWorshipperMonsterMaster", true);
             if (!stanWorshipperDoppelganger.GetComponent<NetworkIdentity>()) stanWorshipperDoppelganger.AddComponent<NetworkIdentity>();
 
-            CharacterMaster component = stanWorshipperDoppelganger.GetComponent<CharacterMaster>();
+            var component = stanWorshipperDoppelganger.GetComponent<CharacterMaster>();
             component.bodyPrefab = stanWorshipperBody;
         }
 

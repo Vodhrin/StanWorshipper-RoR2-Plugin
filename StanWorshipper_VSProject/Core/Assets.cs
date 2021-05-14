@@ -7,7 +7,6 @@ namespace StanWorshipper.Core
 {
     internal static class Assets
     {
-
         public static AssetBundle MainAssetBundle = null;
 
         public static Sprite icon1;
@@ -55,7 +54,7 @@ namespace StanWorshipper.Core
             //Loads the soundbank.
             using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("StanWorshipper.StanWorshipperBank.bnk"))
             {
-                byte[] array = new byte[manifestResourceStream2.Length];
+                var array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);
                 SoundAPI.SoundBanks.Add(array);
             }

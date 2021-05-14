@@ -10,14 +10,14 @@ namespace StanWorshipper.Survivor
 
         public static void Initialize()
         {
-            BuffDef sacrificeBuffDef = ScriptableObject.CreateInstance<BuffDef>();
+            var sacrificeBuffDef = ScriptableObject.CreateInstance<BuffDef>();
             {
                 sacrificeBuffDef.name = "Sacrifice";
                 sacrificeBuffDef.iconSprite = Resources.Load<Sprite>("textures/bufficons/texMovespeedBuffIcon");
                 sacrificeBuffDef.buffColor = Color.yellow;
                 sacrificeBuffDef.canStack = false;
             };
-            CustomBuff sacrificeCustomBuff = new CustomBuff(sacrificeBuffDef);
+            var sacrificeCustomBuff = new CustomBuff(sacrificeBuffDef);
             BuffAPI.Add(sacrificeCustomBuff);
         }
 
