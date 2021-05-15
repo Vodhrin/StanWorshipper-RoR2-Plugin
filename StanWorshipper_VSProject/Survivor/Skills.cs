@@ -107,10 +107,7 @@ namespace StanWorshipper.Survivor
             skillLocator.passiveSkill.enabled = true;
             skillLocator.passiveSkill.skillNameToken = "STANWORSHIPPER_PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = "STANWORSHIPPER_PASSIVE_DESCRIPTION";
-            //This is fucking retarded and doesn't even work but I'm too lazy to add to the asset bundle rn.
-            var texture = Resources.Load<Texture2D>("textures/shrinesymbols/texShrineBloodSymbol");
-            var sprite = Sprite.Create(texture, new Rect(new Vector2(0, 0), new Vector2(1, 1)), Vector2.zero, 100f);
-            skillLocator.passiveSkill.icon = sprite;
+            skillLocator.passiveSkill.icon = Core.Assets.icon5;
 
             //Primary
             var skillFamily1 = skillLocator.primary.skillFamily;

@@ -7,12 +7,13 @@ namespace StanWorshipper.Core
 {
     internal static class Assets
     {
-        public static AssetBundle MainAssetBundle = null;
+        public static AssetBundle mainAssetBundle = null;
 
         public static Sprite icon1;
         public static Sprite icon2;
         public static Sprite icon3;
         public static Sprite icon4;
+        public static Sprite icon5;
 
         public static Sprite stanFace;
         public static Sprite stanFace2;
@@ -31,25 +32,26 @@ namespace StanWorshipper.Core
         public static void Initialize()
         {
 
-            if (MainAssetBundle == null)
+            if (mainAssetBundle == null)
             {
                 using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("StanWorshipper.stanworshipperassetbundle"))
                 {
-                    MainAssetBundle = AssetBundle.LoadFromStream(assetStream);
+                    mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
                 }
             }
 
-            icon1 = MainAssetBundle.LoadAsset<Sprite>("Skill1Icon");
-            icon2 = MainAssetBundle.LoadAsset<Sprite>("Skill2Icon");
-            icon3 = MainAssetBundle.LoadAsset<Sprite>("Skill3Icon");
-            icon4 = MainAssetBundle.LoadAsset<Sprite>("Skill4Icon");
+            icon1 = mainAssetBundle.LoadAsset<Sprite>("Skill1Icon");
+            icon2 = mainAssetBundle.LoadAsset<Sprite>("Skill2Icon");
+            icon3 = mainAssetBundle.LoadAsset<Sprite>("Skill3Icon");
+            icon4 = mainAssetBundle.LoadAsset<Sprite>("Skill4Icon");
+            icon5 = mainAssetBundle.LoadAsset<Sprite>("PassiveIcon");
 
-            stanFace = MainAssetBundle.LoadAsset<Sprite>("StanFace");
-            stanFace2 = MainAssetBundle.LoadAsset<Sprite>("StanFace2");
-            stanFace2Large = MainAssetBundle.LoadAsset<Sprite>("StanFace2Large");
-            emptyIcon = MainAssetBundle.LoadAsset<Sprite>("EmptyIcon");
+            stanFace = mainAssetBundle.LoadAsset<Sprite>("StanFace");
+            stanFace2 = mainAssetBundle.LoadAsset<Sprite>("StanFace2");
+            stanFace2Large = mainAssetBundle.LoadAsset<Sprite>("StanFace2Large");
+            emptyIcon = mainAssetBundle.LoadAsset<Sprite>("EmptyIcon");
 
-            weakStanFireMaterial = MainAssetBundle.LoadAsset<Material>("FireMat");
+            weakStanFireMaterial = mainAssetBundle.LoadAsset<Material>("FireMat");
 
             //Loads the soundbank.
             using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("StanWorshipper.StanWorshipperBank.bnk"))

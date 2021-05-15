@@ -11,7 +11,7 @@ namespace StanWorshipper
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
-    [BepInPlugin("com.Vodhr.StanWorshipperSurvivor", "Stan Worshipper Survivor", "0.0.4")]
+    [BepInPlugin("com.Vodhr.StanWorshipperSurvivor", "Stan Worshipper Survivor", "0.0.5")]
     [R2APISubmoduleDependency(new string[]
     {
         "PrefabAPI",

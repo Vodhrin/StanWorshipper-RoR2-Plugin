@@ -19,8 +19,8 @@ namespace StanWorshipper.Core
 
         public System.Collections.IEnumerator LoadStaticContentAsync(LoadStaticContentAsyncArgs args)
         {
-            // Apparently R2API has it's own content pack and any of the "Add" methods in the various modules also add those assets to
-            // R2API's content pack. Much of this was unneeded. Sigh.
+            // Apparently R2API has it's own content pack and any of the "Add" methods in the various modules also adds those assets to
+            // R2API's content pack.
 
             this.contentPack.identifier = this.identifier;
             contentPack.bodyPrefabs.Add(StanWorshipperPlugin.characterBodies.ToArray());
